@@ -1,5 +1,12 @@
 let fields = [];
 
+let counterArray = [
+    {
+        player1 : 0,
+        player2 : 0
+    }
+]
+
 let gameOver = false;
 
 let currentShape = 'cross';
@@ -18,6 +25,7 @@ function fillShape(id) {
         }
 
         fields[id] = currentShape;
+        console.log(fields)
 
         draw();
         checkForWin();
@@ -74,7 +82,7 @@ function checkForWin() {
         document.getElementById('line-7').style.scale = '1 1.1';
     }
 
-    if(fields.length == 9 && !winner) {
+    if(fields.length == 9 && !fields.includes(undefined) && !winner) {
         console.log('DRAW')
         gameOver = true;
 
@@ -93,10 +101,23 @@ function checkForWin() {
         setTimeout(function() {
             document.getElementById('end-screen').classList.remove('d-none');
             document.getElementById('restart').classList.remove('d-none');
-            document.getElementById('player-won').innerHTML = winner;
+            drawWinner(winner);
             document.querySelector('#win-draw p').innerHTML = 'WON';
         }, 1000)
+
+        counter(winner);
     }
+}
+
+function drawWinner(winner) {
+    if(winner == 'circle') {
+        document.getElementById('player-won').innerHTML = 'Player 1';
+    }
+
+    if(winner == 'cross') {
+        document.getElementById('player-won').innerHTML = 'Player 2';
+    }
+
 }
 
 function restart() {
@@ -114,4 +135,64 @@ function restart() {
         document.getElementById('circle-'+ i).classList.add('d-none');
         document.getElementById('cross-'+ i).classList.add('d-none');
     }
+}
+
+function counter(winner) {
+    let player1 = document.querySelector('#player-1 div');
+    let player2 = document.querySelector('#player-2 div');
+    
+    for(let i = 0; i < counterArray.length; i++) {
+        let player1Points = counterArray[i];
+        let player2Points = counterArray[i];
+        
+        if(winner == 'circle') {
+            player1Points.player1++;
+        }
+        
+        if(winner == 'cross') {
+            player2Points.player2++;
+        }
+
+        player1.innerHTML = player1Points.player1;
+        player2.innerHTML = player2Points.player2;
+    }
+}
+
+function openMenu() {
+    document.querySelector('.menu-inactive').classList.toggle('menu');
+}
+
+
+
+// -- SWITCH TO LANGUAGE --
+
+function switchToUs() {
+    document.querySelector('#player-1 span').innerHTML = 'Player 1';
+    document.querySelector('#player-2 span').innerHTML = 'Player 2';
+}
+
+function switchToGer() {
+    document.querySelector('#player-1 span').innerHTML = 'Spieler 1';
+    document.querySelector('#player-2 span').innerHTML = 'Spieler 2';
+}
+
+function switchToEsp() {
+    document.querySelector('#player-1 span').innerHTML = 'Jugador 1';
+    document.querySelector('#player-2 span').innerHTML = 'Jugador 2';
+}
+
+function switchToFr() {
+    document.querySelector('#player-1 span').innerHTML = 'Joueur 1';
+    document.querySelector('#player-2 span').innerHTML = 'Joueur 2';
+}
+
+function switchToIt() {
+    document.querySelector('#player-1 span').innerHTML = 'Giocatore 1';
+    document.querySelector('#player-2 span').innerHTML = 'Giocatore 2';
+}
+
+function switchDarkMode() {
+    document.querySelector('.player-panel').classList.toggle('invert');
+    document.querySelector('table').classList.toggle('invert');
+    document.querySelector('body').classList.toggle('bg-dark');
 }

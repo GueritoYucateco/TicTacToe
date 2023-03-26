@@ -17,6 +17,14 @@ body {
     display: none !important;
 }
 
+.invert {
+    filter: invert();
+}
+
+.bg-dark {
+    background-color: rgb(0, 0, 0);
+}
+
 header {
     display: flex;
     justify-content: center;
@@ -35,8 +43,83 @@ header span {
     font-weight: 600;
 }
 
-img {
-    background-color: transparent;
+header img {
+    height: 40px;
+    width: 40px;
+    object-fit: contain;
+    position: absolute;
+    right: 10px;
+    scale: 1;
+    transition: scale 125ms ease-in-out;
+}
+
+header img:hover {
+    cursor: pointer;
+    scale: 1.05;
+}
+
+.menu {
+    height: 170px;
+    width: 150px;
+    background-color: rgb(50, 50, 50);
+    position: absolute;
+    right: 0;
+    top: 50px;
+    padding: 10px 5px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transform: scaleY(1) !important;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.menu-inactive {
+    height: 170px;
+    width: 150px;
+    background-color: rgb(50, 50, 50);
+    position: absolute;
+    right: 0;
+    top: 50px;
+    padding: 10px 5px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 225ms ease-in-out;
+}
+
+.menu span {
+    font-size: 18px;
+    font-weight: 500;
+    transform: scale(1);
+    transition: transform 125ms ease-in-out;
+    margin-left: 5px;
+}
+
+.menu span:hover {
+    cursor: pointer;
+    transform: scale(1.025);
+}
+
+.menu img {
+    height: 18px;
+    width: 18px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.dark-mode-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 93%;
+    height: 30px;
+    bottom: 10px;
+}
+
+.dark-mode {
+
 }
 
 table {
@@ -55,6 +138,10 @@ td {
     border: 8px solid black;
     position: relative;
     cursor: pointer;
+}
+
+td:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 table tr:first-child td {
@@ -85,20 +172,37 @@ table tr td:last-child {
     left: 30px;
 }
 
+#player-1 div {
+    height: 30px;
+    width: 30px;
+    color: black;
+    position: absolute;
+    right: -35%;
+}
+
+#player-2 div {
+    height: 30px;
+    width: 30px;
+    color: black;
+    position: absolute;
+    left: -30%;
+}
+
 .player-panel {
     box-sizing: border-box;
     font-size: 32px;
     font-weight: 600;
-    width: 500px;
+    width: 620px;
     display: flex;
     justify-content: space-around;
-    padding: 20px 60px;
-    margin-top: 15px;
+    padding: 0 60px;
+    margin-top: 35px;
 }
 
 .player-panel div {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .player-panel img:first-of-type {
@@ -115,7 +219,7 @@ table tr td:last-child {
 
 .player-inactive {
     opacity: 0.5;
-    scale: 0.9;
+    /* scale: 0.9; */
 }
 
 .horizontal-line {
@@ -190,6 +294,7 @@ table tr td:last-child {
 #win-draw {
     font-size: 24px;
     font-weight: 600;
+    gap: 20px;
 }
 
 

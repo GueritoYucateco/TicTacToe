@@ -13,35 +13,60 @@
 <body>
     <header>
         <span>TicTacToe</span>
-        <img src="">
+        <img onclick="openMenu()" src="./img/menu.PNG">
+
+        <div class="menu-inactive">
+            <span onclick="switchToUs()">English<img class="us" src="./img/us-flag.png"></span>
+            <span onclick="switchToGer()">Deutsch<img class="ger" src="./img/german-flag.png"></span>
+            <span onclick="switchToEsp()">Espanol<img class="esp" src="./img/spanish-flag.png"></span>
+            <span onclick="switchToFr()">Francais<img class="fr" src="./img/french-flag.png"></span>
+            <span onclick="switchToIt()">Italiano<img class="it" src="./img/italian-flag.png"></span>
+
+            <div class="dark-mode-container">
+                <img src="">
+                  
+                <div class="dark-mode">Dark Mode</div>
+            </div>
+        </div>
     </header>
 
     <div id="end-screen" class="end-screen d-none">
         <div id="win-draw">
-            <span id="player-won"></span> <p></p>
+            <span id="player-won"></span><p></p>
             <button onclick="restart()" class="restart d-none" id="restart">Restart</button>
         </div>
     </div>
 
     <div class="player-panel">
         <div class="" id="player-1">
-            <img class="" src="./img/circle.PNG">Player 1
+            <img class="" src="./img/circle.PNG">
+            <span>
+                Player 1 
+            </span>           
+            <div>0</div>
         </div>
+
+        <div>:</div>
+
         <div class="player-inactive" id="player-2">
-            <img class="" src="./img/cross.PNG">Player 2
+            <div>0</div>
+            <img class="" src="./img/cross.PNG">
+            <span>
+                Player 2 
+            </span> 
         </div>
     </div>
 
-    <div id="line-0" class="horizontal-line" style="top: 188px; scale: 0;"></div>
-    <div id="line-1" class="horizontal-line" style="top: 342px; scale: 0;"></div>
-    <div id="line-2" class="horizontal-line" style="top: 493px; scale: 0;"></div>
+    <div id="line-0" class="horizontal-line" style="top: 178px; scale: 0;"></div>
+    <div id="line-1" class="horizontal-line" style="top: 332px; scale: 0;"></div>
+    <div id="line-2" class="horizontal-line" style="top: 483px; scale: 0;"></div>
 
-    <div id="line-3" class="vertical-line" style="left: 246px; top: 87px; scale: 0;"></div>
-    <div id="line-4" class="vertical-line" style="left: 398px; top: 87px; scale: 0;"></div>
-    <div id="line-5" class="vertical-line" style="left: 551px; top: 87px; scale: 0;"></div>
+    <div id="line-3" class="vertical-line" style="left: 222px; top: 109px; scale: 0;"></div>
+    <div id="line-4" class="vertical-line" style="left: 375px; top: 109px; scale: 0;"></div>
+    <div id="line-5" class="vertical-line" style="left: 527px; top: 109px; scale: 0;"></div>
 
-    <div id="line-6" class="diagonal-line" style="left: 401px; top: 39px; rotate: -45deg; scale: 0;"></div>
-    <div id="line-7" class="diagonal-line" style="left: 401px; top: 39px; rotate: 45deg; scale: 0;"></div>
+    <div id="line-6" class="diagonal-line" style="left: 372px; top: 57px; rotate: -45deg; scale: 0;"></div>
+    <div id="line-7" class="diagonal-line" style="left: 372px; top: 61px; rotate: 45deg; scale: 0;"></div>
 
     <table>
         <tr>

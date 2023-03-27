@@ -7,8 +7,9 @@
     <title>TicTacToe</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <link rel="stylesheet" href="styleMobile.css">
 
+    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -16,23 +17,24 @@
         <img onclick="openMenu()" src="./img/menu.PNG">
 
         <div class="menu-inactive">
-            <span onclick="switchToUs()">English<img class="us" src="./img/us-flag.png"></span>
-            <span onclick="switchToGer()">Deutsch<img class="ger" src="./img/german-flag.png"></span>
-            <span onclick="switchToEsp()">Espanol<img class="esp" src="./img/spanish-flag.png"></span>
-            <span onclick="switchToFr()">Francais<img class="fr" src="./img/french-flag.png"></span>
-            <span onclick="switchToIt()">Italiano<img class="it" src="./img/italian-flag.png"></span>
+            <span onclick="switchLanguage('en')">English<img class="us" src="./img/us-flag.png"></span>
+            <span onclick="switchLanguage('de')">Deutsch<img class="ger" src="./img/german-flag.png"></span>
+            <span onclick="switchLanguage('es')">Espanol<img class="esp" src="./img/spanish-flag.png"></span>
+            <span onclick="switchLanguage('fr')">Francais<img class="fr" src="./img/french-flag.png"></span>
 
-            <div class="dark-mode-container">
-                <img src="">
-                  
-                <div class="dark-mode">Dark Mode</div>
+            <div class="dark-mode-container">               
+                <button onclick="toggleDarkMode()">
+                    <div class="slider__bar">
+                        <div class="slider"></div>
+                    </div>
+                </button>
             </div>
         </div>
     </header>
 
     <div id="end-screen" class="end-screen d-none">
         <div id="win-draw">
-            <span id="player-won"></span><p></p>
+            <span id="player-won"></span><span class="player-number"></span><p></p>
             <button onclick="restart()" class="restart d-none" id="restart">Restart</button>
         </div>
     </div>
@@ -57,16 +59,18 @@
         </div>
     </div>
 
-    <div id="line-0" class="horizontal-line" style="top: 178px; scale: 0;"></div>
-    <div id="line-1" class="horizontal-line" style="top: 332px; scale: 0;"></div>
-    <div id="line-2" class="horizontal-line" style="top: 483px; scale: 0;"></div>
+    <div class="line-container">
+        <div id="line-0" class="horizontal-line" style="top: 71px; scale: 0;"></div>
+        <div id="line-1" class="horizontal-line" style="top: 50%; scale: 0;"></div>
+        <div id="line-2" class="horizontal-line" style="top: calc(100% - 71px); scale: 0;"></div>
 
-    <div id="line-3" class="vertical-line" style="left: 222px; top: 109px; scale: 0;"></div>
-    <div id="line-4" class="vertical-line" style="left: 375px; top: 109px; scale: 0;"></div>
-    <div id="line-5" class="vertical-line" style="left: 527px; top: 109px; scale: 0;"></div>
+        <div id="line-3" class="vertical-line" style="left: 71px; scale: 0;"></div>
+        <div id="line-4" class="vertical-line" style="left: 50%; scale: 0;"></div>
+        <div id="line-5" class="vertical-line" style="left: calc(100% - 71px); scale: 0;"></div>
 
-    <div id="line-6" class="diagonal-line" style="left: 372px; top: 57px; rotate: -45deg; scale: 0;"></div>
-    <div id="line-7" class="diagonal-line" style="left: 372px; top: 61px; rotate: 45deg; scale: 0;"></div>
+        <div id="line-6" class="diagonal-line" style="left: 220px; top: -49px; rotate: -45deg; scale: 0;"></div>
+        <div id="line-7" class="diagonal-line" style="left: 220px; top: -50px; rotate: 45deg; scale: 0;"></div>
+    </div>
 
     <table>
         <tr>

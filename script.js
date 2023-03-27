@@ -1,5 +1,7 @@
 let fields = [];
 
+let activeLanguage = 'en';
+
 let counterArray = [
     {
         player1 : 0,
@@ -91,6 +93,8 @@ function checkForWin() {
             document.getElementById('restart').classList.remove('d-none');
             document.getElementById('player-won').innerHTML = '';
             document.querySelector('#win-draw p').innerHTML = 'Draw';
+            document.querySelector('.player-number').classList.add('d-none');
+            document.querySelector('#player-won').classList.add('d-none');
         }, 1000)
     }
 
@@ -102,22 +106,25 @@ function checkForWin() {
             document.getElementById('end-screen').classList.remove('d-none');
             document.getElementById('restart').classList.remove('d-none');
             drawWinner(winner);
-            document.querySelector('#win-draw p').innerHTML = 'WON';
+            document.querySelector('#win-draw p').innerHTML = 'WON !';
+            document.querySelector('.player-number').classList.remove('d-none');
+            document.querySelector('#player-won').classList.remove('d-none');
+            switchLanguage(activeLanguage);
         }, 1000)
 
         counter(winner);
+
     }
 }
 
 function drawWinner(winner) {
     if(winner == 'circle') {
-        document.getElementById('player-won').innerHTML = 'Player 1';
+        document.querySelector('.player-number').innerHTML = '1';
     }
 
     if(winner == 'cross') {
-        document.getElementById('player-won').innerHTML = 'Player 2';
+        document.querySelector('.player-number').innerHTML = '2';
     }
-
 }
 
 function restart() {
@@ -166,33 +173,55 @@ function openMenu() {
 
 // -- SWITCH TO LANGUAGE --
 
-function switchToUs() {
-    document.querySelector('#player-1 span').innerHTML = 'Player 1';
-    document.querySelector('#player-2 span').innerHTML = 'Player 2';
+function switchLanguage(language) {
+    let p1 = document.querySelector('#player-1 span');
+    let p2 = document.querySelector('#player-2 span');
+    let restart = document.querySelector('#restart');
+    let winDraw = document.querySelector('#win-draw p');
+    let winner = document.querySelector('#player-won');
+
+    activeLanguage = language;
+
+    if (language == "en") {
+        p1.innerHTML = 'Player 1';
+        p2.innerHTML = 'Player 2';
+        restart.innerHTML = 'Restart';
+        winDraw.innerHTML = 'WON !';
+        winner.innerHTML = 'Player';
+        return;
+    }
+    if (language == 'de') {
+        p1.innerHTML = 'Spieler 1';
+        p2.innerHTML = 'Spieler 2';
+        restart.innerHTML = 'Nochmal';
+        winDraw.innerHTML = 'hat gewonnen !';
+        winner.innerHTML = 'Spieler';
+        return;
+    }
+
+    if (language == "es") {
+        p1.innerHTML = 'Jugador 1';
+        p2.innerHTML = 'Jugador 2';
+        restart.innerHTML = 'Reanudar';
+        winDraw.innerHTML = 'ganó !';
+        winner.innerHTML = 'Jugador';
+
+        return;
+    }
+
+    if(language == "fr") {
+        p1.innerHTML = 'Joueur 1';
+        p2.innerHTML = 'Joueur 2';
+        restart.innerHTML = 'Redémarrage';
+        winDraw.innerHTML = 'a gagné !';
+        winner.innerHTML = 'Joueur';
+        return;
+    }
 }
 
-function switchToGer() {
-    document.querySelector('#player-1 span').innerHTML = 'Spieler 1';
-    document.querySelector('#player-2 span').innerHTML = 'Spieler 2';
-}
-
-function switchToEsp() {
-    document.querySelector('#player-1 span').innerHTML = 'Jugador 1';
-    document.querySelector('#player-2 span').innerHTML = 'Jugador 2';
-}
-
-function switchToFr() {
-    document.querySelector('#player-1 span').innerHTML = 'Joueur 1';
-    document.querySelector('#player-2 span').innerHTML = 'Joueur 2';
-}
-
-function switchToIt() {
-    document.querySelector('#player-1 span').innerHTML = 'Giocatore 1';
-    document.querySelector('#player-2 span').innerHTML = 'Giocatore 2';
-}
-
-function switchDarkMode() {
+function toggleDarkMode() {
     document.querySelector('.player-panel').classList.toggle('invert');
     document.querySelector('table').classList.toggle('invert');
     document.querySelector('body').classList.toggle('bg-dark');
+    document.querySelector('.slider__bar').classList.toggle('slider__bar__active');
 }
